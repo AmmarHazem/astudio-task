@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { Search } from "lucide-react";
+import { ChevronDown, Search } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Button } from "./ui/button";
 import { Label } from "./ui/label";
@@ -11,7 +11,9 @@ const SearchPopover: FC<SearchPopoverProps> = ({ onChange, buttonText, popoverTi
   return (
     <Popover open={open} onOpenChange={(value) => setOpen(value)}>
       <PopoverTrigger asChild>
-        <Button variant="outline">{buttonText}</Button>
+        <Button variant="outline">
+          {buttonText} <ChevronDown />
+        </Button>
       </PopoverTrigger>
       <PopoverContent className="w-80">
         <div className="grid gap-4">

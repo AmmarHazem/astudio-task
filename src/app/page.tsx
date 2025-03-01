@@ -10,25 +10,15 @@ export default function Home() {
           <h1 className="text-4xl font-bold tracking-tight">Welcome</h1>
           <p className="text-muted-foreground text-lg">Users & Products</p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-lg mx-auto">
           <Link href="/users" className="w-full">
-            <Button
-              variant="outline"
-              size="lg"
-              className="w-full h-24 text-lg flex flex-col gap-2 hover:scale-105 transition-transform"
-            >
+            <Button variant="outline" size="lg" className="w-full h-24 text-lg flex flex-col gap-2">
               <UsersIcon className="h-6 w-6" />
               Users
             </Button>
           </Link>
-
           <Link href="/products" className="w-full">
-            <Button
-              variant="outline"
-              size="lg"
-              className="w-full h-24 text-lg flex flex-col gap-2 hover:scale-105 transition-transform"
-            >
+            <Button variant="outline" size="lg" className="w-full h-24 text-lg flex flex-col gap-2">
               <ShoppingCartIcon className="h-6 w-6" />
               Products
             </Button>

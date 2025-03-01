@@ -10,9 +10,14 @@ import {
 } from "@/components/ui/pagination";
 import { setCurrentPage } from "@/redux/usersSlice";
 import useAppDispatch from "@/hooks/useAppDispatch";
+import useAppSelector from "@/hooks/useAppSelector";
 
-const UsersPagination: FC<UsersPaginationProps> = ({ currentPage, totalPages }) => {
+const UsersPagination: FC = () => {
   const dispatch = useAppDispatch();
+
+  const { limit, currentPage, total } = useAppSelector((state) => state.users);
+
+  const totalPages = Math.ceil(total / limit);
 
   const handlePageChange = useCallback(
     (page: number) => {
@@ -124,9 +129,6 @@ const UsersPagination: FC<UsersPaginationProps> = ({ currentPage, totalPages }) 
   );
 };
 
-interface UsersPaginationProps {
-  currentPage: number;
-  totalPages: number;
-}
+// interface UsersPaginationProps {}
 
 export default UsersPagination;

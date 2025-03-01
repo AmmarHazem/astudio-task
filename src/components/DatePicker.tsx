@@ -1,9 +1,7 @@
 "use client";
-
 import * as React from "react";
 import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
-
+import { CalendarIcon, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -19,6 +17,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ placeholder, onChange, onOpenCh
         >
           <CalendarIcon />
           {value ? format(value, "PPP") : <span>{placeholder ?? `Pick a date`}</span>}
+          <ChevronDown />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0" align="start">
