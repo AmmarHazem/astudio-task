@@ -23,13 +23,18 @@ const ProductsPage: FC = () => {
   const productRows = useMemo(() => {
     return products.map<DataTableRowType>((products) => {
       return [
+        products.id?.toString(),
         products.title,
         products.category,
         products.brand,
         products.price?.toLocaleString(),
         products.rating?.toString(),
+        products.stock?.toString(),
         products.availabilityStatus,
         products.returnPolicy,
+        products.shippingInformation,
+        `${products.discountPercentage?.toLocaleString()}%`,
+        products.warrantyInformation,
       ];
     });
   }, [products]);
@@ -63,7 +68,20 @@ const ProductsPage: FC = () => {
             </div>
           ) : (
             <DataTable
-              headers={["Title", "Category", "Brand", "Price", "Rating", "Availability Status", "Return Policy"]}
+              headers={[
+                "ID",
+                "Title",
+                "Category",
+                "Brand",
+                "Price",
+                "Rating",
+                "Stock",
+                "Availability Status",
+                "Return Policy",
+                "Shipping Information",
+                "Discount Percentage",
+                "Warranty Information",
+              ]}
               rows={productRows}
             />
           )}

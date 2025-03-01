@@ -71,6 +71,7 @@ export const usersSlice = createSlice({
     },
     setSearchName: (state, payload) => {
       state.searchName = payload.payload;
+      state.currentPage = 1;
       state.searchEmail = undefined;
       state.searchDateOfBirth = undefined;
       state.searchGender = undefined;
@@ -79,12 +80,14 @@ export const usersSlice = createSlice({
     setSearchEmail: (state, payload) => {
       state.searchEmail = payload.payload;
       state.searchDateOfBirth = undefined;
+      state.currentPage = 1;
       state.searchGender = undefined;
       state.searchName = undefined;
       state.searchText = "";
     },
     setSearchDateOfBirth: (state, payload) => {
       state.searchDateOfBirth = payload.payload;
+      state.currentPage = 1;
       state.searchEmail = undefined;
       state.searchGender = undefined;
       state.searchName = undefined;
@@ -92,6 +95,7 @@ export const usersSlice = createSlice({
     },
     setSearchGender: (state, payload) => {
       state.searchGender = payload.payload;
+      state.currentPage = 1;
       state.searchDateOfBirth = undefined;
       state.searchEmail = undefined;
       state.searchName = undefined;

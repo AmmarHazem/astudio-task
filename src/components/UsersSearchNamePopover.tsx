@@ -9,6 +9,7 @@ const UsersSearchNamePopover: FC = () => {
   const dispatch = useAppDispatch();
   const { searchName } = useAppSelector((state) => state.users);
   const [debounceName] = useDebounce(searchName, 1000);
+  const debounceLoading = searchName !== debounceName;
 
   useEffect(() => {
     dispatch(fetchUsers());
@@ -18,6 +19,7 @@ const UsersSearchNamePopover: FC = () => {
     <SearchPopover
       buttonText="Name"
       popoverTitle="Search users by name"
+      loading={debounceLoading}
       value={searchName ?? ""}
       onChange={(value) => {
         dispatch(setSearchName(value));

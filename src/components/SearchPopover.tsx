@@ -1,11 +1,11 @@
 import { FC, useState } from "react";
-import { ChevronDown, Search } from "lucide-react";
+import { ChevronDown, Loader2, Search } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Button } from "./ui/button";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 
-const SearchPopover: FC<SearchPopoverProps> = ({ onChange, buttonText, popoverTitle, value }) => {
+const SearchPopover: FC<SearchPopoverProps> = ({ onChange, buttonText, loading, popoverTitle, value }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -34,7 +34,7 @@ const SearchPopover: FC<SearchPopoverProps> = ({ onChange, buttonText, popoverTi
               }}
             />
             <Button variant="outline" size="icon" className="h-8" onClick={() => setOpen(false)}>
-              <Search />
+              {loading ? <Loader2 className="animate-spin" /> : <Search />}
             </Button>
           </div>
         </div>
@@ -47,6 +47,7 @@ interface SearchPopoverProps {
   value: string;
   buttonText: string;
   popoverTitle: string;
+  loading: boolean;
   onChange: (value: string) => void;
 }
 

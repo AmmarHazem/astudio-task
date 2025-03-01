@@ -35,6 +35,8 @@ const UsersPage: FC = () => {
         user.username,
         user.bloodGroup,
         user.eyeColor,
+        user.company?.name,
+        user.company?.address?.address,
       ];
     });
   }, [users]);
@@ -51,7 +53,7 @@ const UsersPage: FC = () => {
 
   return (
     <div className="bg-gradient-to-b from-background to-muted min-h-screen">
-      <div className="w-full max-w-[1500px] p-2 mx-auto pt-10">
+      <div className="w-full max-w-[1800px] p-2 mx-auto pt-10">
         <Breadcrumbs
           routes={[
             { href: "/", name: "Home" },
@@ -93,6 +95,8 @@ const UsersPage: FC = () => {
                 "Username",
                 "Bloodgroup",
                 "Eyecolor",
+                "Company",
+                "Address",
               ]}
               rows={filteredUsers}
             />

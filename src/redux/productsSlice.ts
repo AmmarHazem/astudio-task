@@ -70,6 +70,7 @@ export const productsSlice = createSlice({
     },
     setSearchText: (state, payload) => {
       state.searchText = payload.payload;
+      state.currentPage = 1;
     },
     setSelectedCategory: (state, payload) => {
       state.selectedCategory = payload.payload;

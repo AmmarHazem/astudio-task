@@ -114,6 +114,34 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+@font-face {
+  font-family: "NeutraText";
+  src: url("/fonts/NeutraText-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NeutraText";
+  src: url("/fonts/NeutraText-BoldItalic.otf") format("opentype");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "NeutraText";
+  src: url("/fonts/NeutraText-Book.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NeutraText";
+  src: url("/fonts/NeutraText-BookItalic.otf") format("opentype");
+  font-weight: normal;
+  font-style: italic;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -125,4 +153,5 @@
 
 body {
   color: "#322625";
+  font-family: "NeutraText", sans-serif;
 }
