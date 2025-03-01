@@ -7,7 +7,10 @@ export default function Home() {
     <main className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-background to-muted p-8">
       <div className="max-w-2xl w-full space-y-8 text-center">
         <div className="space-y-4">
-          <h1 className="text-4xl font-bold tracking-tight">Welcome</h1>
+          <div className="relative">
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[150px] h-[20px] z-10 bg-[#fdc936]" />
+            <h1 className="text-4xl font-bold tracking-tight relative z-10">Welcome</h1>
+          </div>
           <p className="text-muted-foreground text-lg">Users & Products</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-lg mx-auto">

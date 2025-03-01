@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ASTUDIO Task
+
+
+## Features
+
+### Users Management
+- Display users in a data table format
+- Advanced filtering options:
+  - Search by name
+  - Search by email
+  - Filter by gender
+  - Filter by date of birth
+- Pagination support
+- Adjustable items per page
+- Real-time search functionality
+
+### Products Management
+- Display products in a data table format
+- Advanced filtering options:
+  - Search by product name
+  - Filter by category
+- Pagination support
+- Adjustable items per page
+- Display of detailed product information including:
+  - Price
+  - Rating
+  - Stock
+  - Availability Status
+  - Return Policy
+  - Shipping Information
+  - Warranty Information
+
+## Tech Stack
+
+- **Frontend Framework**: Next.js
+- **State Management**: Redux Toolkit
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide Icons
+- **HTTP Client**: Axios
+- **API**: DummyJSON
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone [repository-url]
+```
+
+2. Navigate to the project directory:
+```bash
+cd astudio-task
+```
+
+3. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
+
+4. Start the development server:
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/                    # Next.js app directory
+├── components/            # Reusable UI components
+├── hooks/                # Custom React hooks
+├── models/               # TypeScript interfaces and types
+└── redux/               # Redux store, slices, and state management
+```
 
-## Learn More
+## API Integration
 
-To learn more about Next.js, take a look at the following resources:
+The application uses the DummyJSON API for demonstration purposes:
+- Users API: https://dummyjson.com/users
+- Products API: https://dummyjson.com/products
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License - see the LICENSE file for details.
