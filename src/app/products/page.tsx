@@ -1,10 +1,13 @@
 "use client";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import DataTable from "@/components/DataTable";
+import ProductCategoriesSelect from "@/components/ProductCategoriesSelect";
+import ProductsSearchInput from "@/components/ProductsSearchInput";
+import ProductsSelectLimit from "@/components/ProductsSelectLimit";
 import useAppDispatch from "@/hooks/useAppDispatch";
 import useAppSelector from "@/hooks/useAppSelector";
 import { DataTableRowType } from "@/models/DataTableRowType";
-import { fetchProducts } from "@/redux/productsSlice";
+import { fetchProductCategories, fetchProducts } from "@/redux/productsSlice";
 import { FC, useEffect, useMemo } from "react";
 
 const ProductsPage: FC = () => {
@@ -13,6 +16,7 @@ const ProductsPage: FC = () => {
 
   useEffect(() => {
     dispatch(fetchProducts());
+    dispatch(fetchProductCategories());
   }, [dispatch, currentPage, limit]);
 
   const productRows = useMemo(() => {
@@ -38,6 +42,12 @@ const ProductsPage: FC = () => {
             { href: "/products", name: "Products" },
           ]}
         />
+        <div className="flex gap-2 items-center mb-10">
+          <ProductsSelectLimit />
+          <div className="w-[1px] bg-gray-200 h-[30px]" />
+          <ProductsSearchInput />
+          <ProductCategoriesSelect />
+        </div>
         <div className="min-h-[200px] mb-10">
           {loading ? (
             <div className="flex justify-center items-center min-h-[200px]">

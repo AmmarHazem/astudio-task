@@ -14,15 +14,16 @@ const UsersSearchInput: FC = () => {
 
   return (
     <div className="flex">
-      <div className={cn(`overflow-hidden transition-all duration-300`, isOpen ? "w-0" : "w-[150px]")}>
+      <div className={cn(`overflow-hidden transition-all duration-300`, isOpen ? "w-[150px]" : "w-0")}>
         <SearchInput
+          placeholder="Search users"
           value={searchText}
           onChange={(value) => {
             dispatch(setSearchText(value));
           }}
         />
       </div>
-      <Button variant="outline" className={cn(!isOpen ? "ml-2" : "ml-0")} size="icon" onClick={() => setIsOpen(!isOpen)}>
+      <Button variant="outline" className={cn(isOpen ? "ml-2" : "ml-0")} size="icon" onClick={() => setIsOpen(!isOpen)}>
         <Search />
       </Button>
     </div>
