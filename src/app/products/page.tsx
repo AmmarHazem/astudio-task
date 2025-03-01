@@ -2,6 +2,7 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
 import DataTable from "@/components/DataTable";
 import ProductCategoriesSelect from "@/components/ProductCategoriesSelect";
+import ProductsPagination from "@/components/ProductsPagination";
 import ProductsSearchInput from "@/components/ProductsSearchInput";
 import ProductsSelectLimit from "@/components/ProductsSelectLimit";
 import useAppDispatch from "@/hooks/useAppDispatch";
@@ -67,7 +68,7 @@ const ProductsPage: FC = () => {
             />
           )}
         </div>
-        {/* <UsersPagination /> */}
+        <ProductsPagination />
       </div>
     </div>
   );
