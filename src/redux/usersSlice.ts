@@ -12,6 +12,7 @@ interface UsersState {
   searchText: string;
   searchName?: string;
   searchEmail?: string;
+  searchGender?: "male" | "female";
   searchDateOfBirth?: string;
 }
 
@@ -27,6 +28,21 @@ export const fetchUsers = createAsyncThunk("users/fetchUsers", async (_, thunkAP
   const state = thunkAPI.getState() as RootState;
   const searchParams = new URLSearchParams();
   searchParams.set("limit", state.users.limit.toString());
+  if (state.users.searchName || state.users.searchEmail) {
+    searchParams.set("q", (state.users.searchName || state.users.searchEmail?.toString()) ?? "");
+    const response = await axios.get<GetUsersResponseModel>(`https://dummyjson.com/users/search?${searchParams.toString()}`);
+    return response.data;
+  } else if (state.users.searchGender) {
+    searchParams.set("key", "gender");
+    searchParams.set("value", state.users.searchGender);
+    const response = await axios.get<GetUsersResponseModel>(`https://dummyjson.com/users/filter?${searchParams.toString()}`);
+    return response.data;
+  } else if (state.users.searchDateOfBirth) {
+    searchParams.set("key", "birthDate");
+    searchParams.set("value", state.users.searchDateOfBirth);
+    const response = await axios.get<GetUsersResponseModel>(`https://dummyjson.com/users/filter?${searchParams.toString()}`);
+    return response.data;
+  }
   const response = await axios.get<GetUsersResponseModel>(`https://dummyjson.com/users?${searchParams.toString()}`);
   return response.data;
 });
@@ -43,6 +59,38 @@ export const usersSlice = createSlice({
     },
     setSearchText: (state, payload) => {
       state.searchText = payload.payload;
+      state.searchName = undefined;
+      state.searchEmail = undefined;
+      state.searchDateOfBirth = undefined;
+      state.searchGender = undefined;
+    },
+    setSearchName: (state, payload) => {
+      state.searchName = payload.payload;
+      state.searchEmail = undefined;
+      state.searchDateOfBirth = undefined;
+      state.searchGender = undefined;
+      state.searchText = "";
+    },
+    setSearchEmail: (state, payload) => {
+      state.searchEmail = payload.payload;
+      state.searchDateOfBirth = undefined;
+      state.searchGender = undefined;
+      state.searchName = undefined;
+      state.searchText = "";
+    },
+    setSearchDateOfBirth: (state, payload) => {
+      state.searchDateOfBirth = payload.payload;
+      state.searchEmail = undefined;
+      state.searchGender = undefined;
+      state.searchName = undefined;
+      state.searchText = "";
+    },
+    setSearchGender: (state, payload) => {
+      state.searchGender = payload.payload;
+      state.searchDateOfBirth = undefined;
+      state.searchEmail = undefined;
+      state.searchName = undefined;
+      state.searchText = "";
     },
   },
   extraReducers: (builder) => {
@@ -61,6 +109,7 @@ export const usersSlice = createSlice({
   },
 });
 
-export const { setUsers, setLimit, setSearchText } = usersSlice.actions;
+export const { setUsers, setLimit, setSearchText, setSearchDateOfBirth, setSearchEmail, setSearchGender, setSearchName } =
+  usersSlice.actions;
 
 export default usersSlice.reducer;

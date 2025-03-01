@@ -1,6 +1,8 @@
 "use client";
 import DataTable from "@/components/DataTable";
+import UsersSearchEmailPopover from "@/components/UsersSearchEmailPopover";
 import UsersSearchInput from "@/components/UsersSearchInput";
+import UsersSearchNamePopover from "@/components/UsersSearchNamePopover";
 import UsersSelectLimit from "@/components/UsersSelectLimit";
 import useAppDispatch from "@/hooks/useAppDispatch";
 import useAppSelector from "@/hooks/useAppSelector";
@@ -46,6 +48,8 @@ const UsersPage: FC = () => {
     <div className="w-full max-w-[1000px] p-2 mx-auto">
       <UsersSelectLimit />
       <UsersSearchInput />
+      <UsersSearchNamePopover />
+      <UsersSearchEmailPopover />
       <DataTable
         headers={["First Name", "LastName", "Maiden Name", "Age", "Gender", "Email", "Username", "Bloodgroup", "Eyecolor"]}
         rows={filteredUsers}

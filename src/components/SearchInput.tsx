@@ -1,10 +1,12 @@
 import { FC } from "react";
+import { Input } from "./ui/input";
 
 const SearchInput: FC<SearchInputProps> = ({ onChange, value }) => {
   return (
-    <input
-      className="border border-gray-300 rounded-md px-4"
+    <Input
+      className="w-[150px] h-[30px]"
       type="search"
+      placeholder="Search"
       value={value}
       onChange={(e) => {
         onChange(e.target.value);
