@@ -4,7 +4,7 @@ import { Input } from "./ui/input";
 const SearchInput: FC<SearchInputProps> = ({ onChange, value }) => {
   return (
     <Input
-      className="w-[150px] h-[30px]"
+      className="w-[150px]"
       type="search"
       placeholder="Search"
       value={value}

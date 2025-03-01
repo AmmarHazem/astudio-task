@@ -1,14 +1,18 @@
 import { FC } from "react";
-import DataTableRow from "./DataTableRow";
 import { DataTableRowType } from "@/models/DataTableRowType";
+import DataTableRow from "./DataTableRow";
 
 const DataTable: FC<DataTableProps> = ({ headers, rows }) => {
   return (
-    <table>
-      <thead>
+    <table className="w-full border-2 border-[#ebebeb]">
+      <thead className="bg-[#c0e3e5] uppercase text-left">
         <tr>
           {headers.map((header) => {
-            return <th key={header}>{header}</th>;
+            return (
+              <th className="py-4 px-2 border-r-2 border-[#ebebeb]" key={header}>
+                {header}
+              </th>
+            );
           })}
         </tr>
       </thead>

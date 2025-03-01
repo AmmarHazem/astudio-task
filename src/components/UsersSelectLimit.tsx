@@ -13,12 +13,15 @@ const UsersSelectLimit: FC = () => {
   }, [dispatch, limit]);
 
   return (
-    <SelectLimit
-      value={limit}
-      onChange={(value) => {
-        dispatch(setLimit(value));
-      }}
-    />
+    <>
+      <SelectLimit
+        value={limit}
+        onChange={(value) => {
+          dispatch(setLimit(value));
+        }}
+      />
+      <span>Entries</span>
+    </>
   );
 };
 

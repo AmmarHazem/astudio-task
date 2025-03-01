@@ -14,6 +14,8 @@ interface UsersState {
   searchEmail?: string;
   searchGender?: "male" | "female";
   searchDateOfBirth?: string;
+  currentPage: number;
+  total: number;
 }
 
 const initialState: UsersState = {
@@ -22,12 +24,15 @@ const initialState: UsersState = {
   loading: true,
   searchText: "",
   loadingError: false,
+  currentPage: 1,
+  total: 0,
 };
 
 export const fetchUsers = createAsyncThunk("users/fetchUsers", async (_, thunkAPI) => {
   const state = thunkAPI.getState() as RootState;
   const searchParams = new URLSearchParams();
   searchParams.set("limit", state.users.limit.toString());
+  searchParams.set("skip", ((state.users.currentPage - 1) * state.users.limit).toString());
   if (state.users.searchName || state.users.searchEmail) {
     searchParams.set("q", (state.users.searchName || state.users.searchEmail?.toString()) ?? "");
     const response = await axios.get<GetUsersResponseModel>(`https://dummyjson.com/users/search?${searchParams.toString()}`);
@@ -92,6 +97,9 @@ export const usersSlice = createSlice({
       state.searchName = undefined;
       state.searchText = "";
     },
+    setCurrentPage: (state, payload) => {
+      state.currentPage = payload.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -101,6 +109,7 @@ export const usersSlice = createSlice({
       .addCase(fetchUsers.fulfilled, (state, action) => {
         state.loading = false;
         state.users = action.payload.users ?? [];
+        state.total = action.payload.total ?? 0;
       })
       .addCase(fetchUsers.rejected, (state) => {
         state.loading = false;
@@ -109,7 +118,15 @@ export const usersSlice = createSlice({
   },
 });
 
-export const { setUsers, setLimit, setSearchText, setSearchDateOfBirth, setSearchEmail, setSearchGender, setSearchName } =
-  usersSlice.actions;
+export const {
+  setUsers,
+  setLimit,
+  setSearchText,
+  setSearchDateOfBirth,
+  setSearchEmail,
+  setSearchGender,
+  setSearchName,
+  setCurrentPage,
+} = usersSlice.actions;
 
 export default usersSlice.reducer;
